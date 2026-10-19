@@ -33,8 +33,32 @@ document.addEventListener(
 
 // O som só pode começar depois do primeiro toque/tecla.
 const liberarSom = () => jogo.audio.iniciar();
-window.addEventListener("pointerdown", liberarSom, { once: true, capture: true });
+window.addEventListener("pointerup", liberarSom, { once: true, capture: true });
 window.addEventListener("keydown", liberarSom, { once: true, capture: true });
+
+// ---------- Tela cheia e tela deitada (celular) ----------
+// Os navegadores só deixam entrar em tela cheia e travar a rotação depois de
+// um toque. Então o primeiro toque em qualquer lugar já faz as duas coisas
+// (e, se a pessoa sair da tela cheia, o próximo toque volta).
+const el = document.documentElement;
+const podeVirar = !!((el.requestFullscreen || el.webkitRequestFullscreen) && screen.orientation?.lock);
+if (podeVirar) {
+  $("btn-girar").hidden = false;
+  $("girar-dica").textContent = "Ou toque no botão e a tela vira sozinha:";
+}
+$("btn-girar").addEventListener("click", () => {
+  jogo.entrada.mudarDispositivo("toque");
+  jogo.telaCheia(true);
+});
+window.addEventListener(
+  "pointerup",
+  (e) => {
+    if (e.pointerType !== "touch" || jogo.modo === "final" || e.target.closest?.("#btn-girar")) return;
+    if (document.fullscreenElement || document.webkitFullscreenElement) return;
+    jogo.telaCheia(false);
+  },
+  true,
+);
 
 // ---------- Laço principal ----------
 let anterior = performance.now();

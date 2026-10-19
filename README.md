@@ -21,6 +21,14 @@ No fim, o botão **CONTINUAR A INVESTIGAÇÃO** abre a inscrição do Acampadent
 | Pausa | Esc ou P | botão de pausa |
 | Som | M | botão de som |
 
+### Tela cheia no celular
+
+Os navegadores só permitem tela cheia e tela travada na horizontal depois de um toque. Por isso:
+
+- **Android:** o primeiro toque já coloca o jogo em tela cheia, deitado. Se o celular estiver em pé, aparece o botão **Virar a tela e jogar**.
+- **iPhone:** o Safari não permite tela cheia nem travar a rotação; aparece o aviso para girar o celular.
+- **Atalho na tela inicial** (menu do navegador → *Adicionar à tela inicial* / *Instalar app*): o jogo abre direto em tela cheia e deitado.
+
 ## Rodar no computador
 
 O jogo usa módulos JavaScript, então precisa de um servidor simples (abrir o `index.html` direto não funciona):

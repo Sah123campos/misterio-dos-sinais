@@ -161,18 +161,34 @@ export class Jogo {
     this.ui.atualizarMenu();
   }
 
+  // Tela cheia com a tela travada na horizontal. Os navegadores só permitem
+  // isso logo depois de um toque; no iPhone não existe, e o jogo segue normal.
   telaCheia(forcar) {
-    const el = document.documentElement;
     const toque = this.entrada.dispositivo === "toque";
-    if (!forcar && !toque) return;
-    try {
-      if (!document.fullscreenElement && el.requestFullscreen) {
-        el.requestFullscreen({ navigationUI: "hide" })
-          .then(() => screen.orientation?.lock?.("landscape").catch(() => {}))
-          .catch(() => {});
+    if (!forcar && !toque) return Promise.resolve(false);
+    const el = document.documentElement;
+    const travar = () => {
+      try {
+        screen.orientation?.lock?.("landscape")?.catch?.(() => {});
+      } catch {
+        /* sem trava de rotação */
       }
+    };
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      travar();
+      return Promise.resolve(true);
+    }
+    const pedir = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!pedir) return Promise.resolve(false);
+    try {
+      return Promise.resolve(pedir.call(el, { navigationUI: "hide" }))
+        .then(() => {
+          travar();
+          return true;
+        })
+        .catch(() => false);
     } catch {
-      /* sem tela cheia (iPhone): segue normalmente */
+      return Promise.resolve(false);
     }
   }
 

@@ -669,6 +669,7 @@ kbd {
   color: var(--texto);
 }
 .girar small { color: var(--texto2); font-size: 15px; }
+.girar .btn { width: auto; max-width: 86vw; margin-top: 18px; padding: 16px 30px; font-size: 19px; }
 .girar-celular {
   width: 46px;
   height: 80px;
