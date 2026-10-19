@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0812">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Um RPG de investigação em pixel art pelos sinais do Evangelho de João.">
+  <title>O Mistério dos Sinais</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="assets/icone.svg">
+  <link rel="preload" href="assets/fontes/PixelifySans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="tela" aria-label="Cenário do jogo"></canvas>
+
+    <!-- HUD -->
+    <div id="hud" hidden>
+      <div id="objetivo" class="objetivo"><span class="objetivo-rotulo">Objetivo</span><span id="objetivo-texto"></span></div>
+      <div class="hud-botoes">
+        <button id="btn-som" class="btn-icone" aria-label="Ligar ou desligar o som"><span class="ico ico-som"></span></button>
+        <button id="btn-pausa" class="btn-icone" aria-label="Pausar"><span class="ico ico-pausa"></span></button>
+      </div>
+      <div id="prompt" class="prompt" hidden><kbd>E</kbd><span id="prompt-texto"></span></div>
+      <div id="dicas-teclado" class="dicas-teclado">
+        <span><kbd>WASD</kbd> andar</span><span><kbd>E</kbd> interagir</span><span><kbd>F</kbd> lanterna</span><span id="dica-uv" hidden><kbd>Q</kbd> luz negra</span><span><kbd>J</kbd> diário</span>
+      </div>
+    </div>
+
+    <!-- Controles de toque -->
+    <div id="toque" hidden>
+      <div id="zona-joystick"></div>
+      <div id="joystick" hidden><div id="joystick-pino"></div></div>
+      <button id="btn-interagir" class="btn-toque btn-grande" aria-label="Interagir"><span class="ico ico-mao"></span><span id="btn-interagir-texto">Interagir</span></button>
+      <button id="btn-lanterna" class="btn-toque" aria-label="Lanterna"><span class="ico ico-lanterna"></span></button>
+      <button id="btn-uv" class="btn-toque btn-uv" aria-label="Luz negra" hidden><span class="ico ico-uv"></span></button>
+      <button id="btn-diario" class="btn-toque" aria-label="Diário"><span class="ico ico-diario"></span></button>
+    </div>
+
+    <!-- Diálogo -->
+    <div id="dialogo" class="moldura" hidden>
+      <div id="dialogo-retrato" class="retrato moldura-fina"><canvas id="retrato-canvas" width="96" height="96"></canvas></div>
+      <div class="dialogo-corpo">
+        <div id="dialogo-nome" class="placa-nome"></div>
+        <p id="dialogo-texto"></p>
+        <div id="dialogo-ref" class="dialogo-ref"></div>
+      </div>
+      <div class="dialogo-seta" aria-hidden="true"></div>
+    </div>
+
+    <!-- Aviso rápido (descobertas) -->
+    <div id="aviso" class="aviso" hidden></div>
+
+    <!-- Cartão de capítulo / narração -->
+    <div id="cartao" class="cartao" hidden>
+      <div class="cartao-num" id="cartao-num"></div>
+      <div class="cartao-titulo" id="cartao-titulo"></div>
+      <div class="cartao-sub" id="cartao-sub"></div>
+    </div>
+
+    <!-- Diário de investigação -->
+    <div id="diario" class="painel-tela" hidden>
+      <div class="moldura painel">
+        <button class="fechar" data-fechar aria-label="Fechar">×</button>
+        <h2>Diário de investigação</h2>
+        <section>
+          <h3>Objetivo atual</h3>
+          <p id="diario-objetivo"></p>
+        </section>
+        <section>
+          <h3>Símbolos encontrados</h3>
+          <div id="diario-simbolos" class="simbolos"></div>
+        </section>
+        <section>
+          <h3>Pistas</h3>
+          <ul id="diario-pistas" class="pistas"></ul>
+        </section>
+        <section>
+          <h3>Leituras</h3>
+          <ul class="leituras">
+            <li><b>João 2:1–11</b> — O casamento em Caná: Jesus transforma água em vinho, o primeiro dos sinais.</li>
+            <li><b>João 4:1–42</b> — No poço de Jacó, Jesus conversa com a mulher samaritana sobre a água viva.</li>
+            <li><b>João 5:1–9</b> — No tanque de Betesda, Jesus cura um homem doente havia 38 anos.</li>
+          </ul>
+          <p class="nota">As marcas escondidas e o mistério são parte da ficção deste jogo. Os acontecimentos bíblicos seguem o relato do Evangelho de João.</p>
+        </section>
+      </div>
+    </div>
+
+    <!-- Enigmas -->
+    <div id="enigma" class="painel-tela" hidden>
+      <div class="moldura painel painel-enigma">
+        <button class="fechar" data-fechar aria-label="Fechar">×</button>
+        <h2 id="enigma-titulo"></h2>
+        <p id="enigma-texto"></p>
+        <div id="enigma-corpo"></div>
+        <p id="enigma-retorno" class="enigma-retorno" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <!-- Pausa -->
+    <div id="pausa" class="painel-tela" hidden>
+      <div class="moldura painel painel-menu">
+        <h2>Pausado</h2>
+        <button class="btn" data-acao="continuar">Continuar</button>
+        <button class="btn" data-acao="diario">Diário</button>
+        <button class="btn" data-acao="som">Som: ligado</button>
+        <button class="btn" data-acao="vozes">Vozes: desligadas</button>
+        <button class="btn" data-acao="telacheia">Tela cheia</button>
+        <button class="btn btn-secundario" data-acao="reiniciar">Recomeçar do início</button>
+      </div>
+    </div>
+
+    <!-- Tela título -->
+    <div id="titulo" class="tela-titulo">
+      <div class="titulo-logo">
+        <div class="titulo-pre">uma investigação no Evangelho de João</div>
+        <h1><span>O Mistério</span><span>dos Sinais</span></h1>
+      </div>
+      <div class="titulo-botoes">
+        <button id="btn-comecar" class="btn btn-principal">Começar investigação</button>
+        <button id="btn-continuar" class="btn" hidden>Continuar de onde parei</button>
+      </div>
+      <div class="titulo-rodape">Use fones de ouvido · cerca de 10 minutos</div>
+    </div>
+
+    <!-- Final -->
+    <div id="final" class="tela-final" hidden>
+      <p id="final-linha1" class="final-linha"></p>
+      <p id="final-linha2" class="final-linha"></p>
+      <h2 id="final-titulo" class="final-titulo">A HISTÓRIA CONTINUA NO <span>ACAMPADENTRO</span></h2>
+      <div id="final-botoes" class="final-botoes">
+        <button id="btn-acampadentro" class="btn btn-principal">CONTINUAR A INVESTIGAÇÃO</button>
+        <button id="btn-reiniciar" class="btn btn-secundario">Jogar novamente</button>
+      </div>
+    </div>
+
+    <!-- Girar o celular -->
+    <div id="girar" class="girar">
+      <div class="girar-celular"></div>
+      <p>Gire o celular para jogar</p>
+      <small>O jogo funciona na horizontal</small>
+    </div>
+
+    <div id="carregando" class="carregando"><div class="carregando-barra"><div id="carregando-progresso"></div></div><p>Preparando a investigação…</p></div>
+    <div id="fade" class="fade"></div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

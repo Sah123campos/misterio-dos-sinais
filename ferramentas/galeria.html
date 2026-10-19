@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Galeria de sprites</title>
+<style>
+  body { background: #1b1828; color: #ddd; font: 12px monospace; margin: 8px; }
+  canvas { image-rendering: pixelated; display: block; }
+  .item { display: inline-block; margin: 4px 10px 10px 0; vertical-align: top; }
+</style>
+</head>
+<body>
+<div id="g"></div>
+<script type="module">
+  import { ELENCO } from "../src/dados/elenco.js";
+  import { gerarFolha, gerarDeitado, gerarRetratoSprite } from "../src/arte/personagens.js";
+  const g = document.getElementById("g");
+  const params = new URLSearchParams(location.search);
+  const escala = Number(params.get("e") || 4);
+  const filtro = params.get("so");
+  function mostrar(nome, canvas, esc = escala) {
+    const d = document.createElement("div");
+    d.className = "item";
+    const c = document.createElement("canvas");
+    c.width = canvas.width * esc;
+    c.height = canvas.height * esc;
+    const ctx = c.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(canvas, 0, 0, c.width, c.height);
+    d.append(nome, c);
+    g.append(d);
+  }
+  for (const [id, p] of Object.entries(ELENCO)) {
+    if (filtro && !filtro.split(",").includes(id)) continue;
+    const folha = gerarFolha(p.sprite);
+    mostrar(id, folha);
+  }
+  if (!filtro) {
+    mostrar("deitado", gerarDeitado(ELENCO.enfermo.sprite));
+    mostrar("retrato", gerarRetratoSprite(gerarFolha(ELENCO.jesus.sprite), true), 1);
+  }
+  document.title = "pronto";
+</script>
+</body>
+</html>

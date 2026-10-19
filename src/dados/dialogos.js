@@ -1,0 +1,166 @@
+// Todos os textos do jogo. As falas bíblicas são paráfrases fiéis do
+// Evangelho de João, com a referência de cada versículo.
+// "narrador" mostra o texto como leitura das Escrituras.
+
+export const DIALOGOS = {
+  // ======================= CANÁ (João 2:1-11) =======================
+  cana: {
+    intro: [
+      { quem: "narrador", ref: "João 2:1–2", texto: "Houve um casamento em Caná da Galileia. A mãe de Jesus estava lá, e Jesus e seus discípulos também foram convidados." },
+    ],
+    debora: [
+      { quem: "debora", texto: "Que festa bonita! Mas repara: os empregados estão correndo de um lado para o outro perto da cozinha." },
+      { quem: "debora", texto: "Vai lá ver o que houve. E se algum canto estiver escuro demais, liga a lanterna." },
+    ],
+    deboraDepois: [
+      { quem: "debora", texto: "Você viu aquilo? A água virou vinho!" },
+      { quem: "debora", texto: "E tem mais: vi uma luz roxa piscando lá na adega, no canto escuro. Vai conferir!" },
+    ],
+    deboraFim: [{ quem: "debora", texto: "Se tiver marcas escondidas aqui, elas devem levar até o portão do norte." }],
+    servoAntes: [
+      { quem: "servo", texto: "Ai, ai, ai... O vinho acabou! E a festa mal começou!" },
+      { quem: "servo", texto: "Se os convidados perceberem, os noivos vão passar vergonha diante da cidade inteira." },
+    ],
+    milagre1: [
+      { quem: "maria", ref: "João 2:3", texto: "Eles não têm mais vinho." },
+      { quem: "jesus", ref: "João 2:4", texto: "Mulher, por que me envolver nisso? A minha hora ainda não chegou." },
+      { quem: "maria", ref: "João 2:5", texto: "Façam tudo o que ele mandar." },
+      { quem: "narrador", ref: "João 2:6", texto: "Ali havia seis talhas de pedra, usadas nos ritos de purificação dos judeus. Em cada uma cabiam de oitenta a cento e vinte litros." },
+      { quem: "jesus", ref: "João 2:7", texto: "Encham de água essas talhas." },
+    ],
+    servoAgua: [{ quem: "servo", texto: "Vai ajudar a gente? Pegue um cântaro na cisterna e encha as talhas até a borda!" }],
+    cisternaSemOrdem: [{ quem: "jogador", texto: "Água fresca da cisterna. Por enquanto ninguém precisa dela." }],
+    milagre2: [{ quem: "jesus", ref: "João 2:8", texto: "Agora tirem um pouco e levem ao mestre-sala." }],
+    mestre: [
+      { quem: "mestre", ref: "João 2:10", texto: "Todo mundo serve primeiro o melhor vinho e, depois que os convidados já beberam bastante, serve o inferior. Mas você guardou o melhor vinho até agora!" },
+    ],
+    sinal: [
+      { quem: "narrador", ref: "João 2:11", texto: "Este foi o primeiro dos sinais de Jesus, em Caná da Galileia. Assim ele revelou a sua glória, e os seus discípulos creram nele." },
+    ],
+    servoDepois: [{ quem: "servo", texto: "Eu mesmo enchi aquelas talhas com água... e agora é vinho! O melhor que já provei." }],
+    mariaAntes: [{ quem: "maria", texto: "Que alegria ver os noivos tão felizes. Que nada falte nesta festa." }],
+    mariaDepois: [{ quem: "maria", texto: "Guarde no coração o que você viu hoje." }],
+    jesusAntes: [{ quem: "jesus", texto: "A paz esteja com você." }],
+    jesusDepois: [{ quem: "jesus", texto: "Quem tem olhos para ver, perceba os sinais." }],
+    noivo: [{ quem: "noivo", texto: "Obrigado por vir! Hoje é o dia mais feliz da minha vida." }],
+    noivoDepois: [{ quem: "noivo", texto: "O mestre-sala disse que guardei o melhor vinho para o fim... mas eu nem sei de onde ele veio!" }],
+    mestreAntes: [{ quem: "mestre", texto: "Tudo precisa estar perfeito. Onde estão os serventes com o vinho?" }],
+    mestreDepois: [{ quem: "mestre", texto: "Que vinho! Nunca provei nada igual." }],
+    convidado: [{ quem: "convidado1", texto: "Dizem que esta festa vai durar a semana inteira!" }],
+    convidada: [{ quem: "convidada1", texto: "Olha a noiva! Que véu lindo." }],
+    kenedyAntes: [{ quem: "kenedy", texto: "Psiu! Estou procurando uma coisa aqui na adega... Vai ver o que está acontecendo na festa!" }],
+    kenedyUV: [
+      { quem: "kenedy", texto: "Ainda bem que você trouxe lanterna! Olha o que achei atrás dos barris: uma lanterna de luz negra." },
+      { quem: "kenedy", texto: "Com ela aparecem marcas que ninguém vê. Tem setas no chão apontando para fora daqui. Toma, fica com ela!" },
+    ],
+    kenedyDepois: [{ quem: "kenedy", texto: "Siga as setas com a luz negra. Alguém quis que a gente achasse alguma coisa." }],
+    achouSimbolo: [{ quem: "jogador", texto: "Um símbolo escondido na sexta talha... parece desenhar a própria talha." }],
+    portaoAntes: [{ quem: "jogador", texto: "O portão está trancado. Melhor ver o que está acontecendo na festa primeiro." }],
+    portaoInscricao: [{ quem: "jogador", texto: "\"Quantas talhas de pedra?\" A resposta deve abrir a fechadura do portão." }],
+    portaoAberto: [{ quem: "debora", texto: "Abriu! Vamos seguir as marcas. A investigação continua!" }],
+    primeiroSinal: [{ quem: "jogador", texto: "\"O primeiro dos sinais.\" Alguém escreveu isso na parede da cozinha." }],
+    portaoTrancado: [{ quem: "jogador", texto: "Trancado. A fechadura tem um mostrador com números... Deve haver uma pista escondida por aqui." }],
+    cheias: [{ quem: "narrador", ref: "João 2:7", texto: "E eles encheram as talhas até a borda." }],
+    talhaAntes: [{ quem: "jogador", texto: "Uma grande talha de pedra, vazia. É usada nos ritos de purificação." }],
+    talhaSemAgua: [{ quem: "jogador", texto: "Está vazia. Preciso buscar água na cisterna." }],
+    talhaCheia: [{ quem: "jogador", texto: "Esta já está cheia até a borda." }],
+    talhaVinho: [{ quem: "jogador", texto: "Vinho... e há pouco era só água." }],
+    cisternaCheia: [{ quem: "jogador", texto: "O cântaro já está cheio. Agora, às talhas!" }],
+    cisternaDepois: [{ quem: "jogador", texto: "A água da cisterna, fresca e limpa." }],
+    servoEnchendo: [{ quem: "servo", texto: "Isso! Até a borda, todas as seis!" }],
+    deboraEnchendo: [{ quem: "debora", texto: "Ele mandou encher as talhas! A cisterna fica lá na cozinha." }],
+    noiva: [{ quem: "noiva", texto: "Que noite linda! Obrigada por vir à nossa festa." }],
+    noivaDepois: [{ quem: "noiva", texto: "Todo mundo está elogiando o vinho... Que alívio!" }],
+    convidado2: [{ quem: "convidado2", texto: "Na Galileia, casamento é festa para a cidade inteira!" }],
+    convidada2Antes: [{ quem: "convidada2", texto: "Os empregados estão cochichando... Será que aconteceu alguma coisa?" }],
+    convidada2Depois: [{ quem: "convidada2", texto: "Este vinho está ainda melhor que o primeiro!" }],
+    convidado3: [{ quem: "convidado3", texto: "Sete dias de festa! E ainda estamos no começo." }],
+    convidada3: [{ quem: "convidada3", texto: "A mãe de Jesus está ajudando em tudo por aqui." }],
+    servo2Antes: [{ quem: "servo2", texto: "Tanta gente! Mal dá tempo de servir todo mundo." }],
+    servo2Depois: [{ quem: "servo2", texto: "Fui eu que tirei da talha... e saiu vinho! Eu sei de onde ele veio." }],
+  },
+
+  // ======================= POÇO DE JACÓ (João 4) =======================
+  poco: {
+    intro: [
+      { quem: "narrador", ref: "João 4:5–6", texto: "Jesus chegou a uma cidade de Samaria chamada Sicar, perto do poço de Jacó. Cansado da viagem, sentou-se junto ao poço. Era por volta do meio-dia." },
+    ],
+    bea: [
+      { quem: "bea", texto: "Que sol forte! Quase ninguém vem buscar água a esta hora." },
+      { quem: "bea", texto: "Olha, Jesus está sentado ali no poço. Chega mais perto, mas sem atrapalhar." },
+    ],
+    beaDepois: [{ quem: "bea", texto: "Ela saiu correndo e esqueceu o cântaro! Dá uma olhada nele com a luz negra." }],
+    conversa: [
+      { quem: "narrador", ref: "João 4:7", texto: "Uma mulher samaritana veio tirar água do poço." },
+      { quem: "jesus", ref: "João 4:7", texto: "Dê-me um pouco de água." },
+      { quem: "samaritana", ref: "João 4:9", texto: "Como o senhor, sendo judeu, pede água a mim, uma mulher samaritana?" },
+      { quem: "jesus", ref: "João 4:10", texto: "Se você conhecesse o dom de Deus e quem está lhe pedindo água, você é que pediria, e ele lhe daria água viva." },
+      { quem: "samaritana", ref: "João 4:11", texto: "O senhor nem tem balde, e o poço é fundo. De onde vai tirar essa água viva?" },
+      { quem: "jesus", ref: "João 4:13–14", texto: "Quem beber desta água terá sede outra vez. Mas quem beber da água que eu lhe der nunca mais terá sede: ela vai se tornar uma fonte que jorra para a vida eterna." },
+      { quem: "samaritana", ref: "João 4:15", texto: "Senhor, dê-me dessa água!" },
+      { quem: "narrador", ref: "João 4:16–19", texto: "Então Jesus falou da vida dela como quem a conhecia por inteiro, e a mulher percebeu que estava diante de alguém enviado por Deus." },
+      { quem: "samaritana", ref: "João 4:25", texto: "Eu sei que o Messias, o Cristo, vai chegar. Quando ele vier, vai nos explicar tudo." },
+      { quem: "jesus", ref: "João 4:26", texto: "Sou eu, que estou falando com você." },
+    ],
+    saida: [
+      { quem: "narrador", ref: "João 4:28–29", texto: "A mulher deixou o seu cântaro, voltou à cidade e dizia a todos: \"Venham ver um homem que me disse tudo o que eu fiz!\"" },
+    ],
+    cantaroSemUV: [{ quem: "jogador", texto: "Ela deixou o cântaro para trás... Será que tem alguma marca nele? Vou testar a luz negra." }],
+    cantaroDepois: [{ quem: "jogador", texto: "O cântaro da mulher. A gota brilha nele sob a luz negra." }],
+    achouGota: [{ quem: "jogador", texto: "Uma gota! Água viva... Este é o segundo símbolo." }],
+    inscricaoPoco: [{ quem: "jogador", texto: "\"Primeiro a talha, depois a fonte.\" E a seta aponta para a gruta escura." }],
+    mj: [
+      { quem: "mj", texto: "Que bom que você chegou! Esta gruta é escura demais." },
+      { quem: "mj", texto: "Tem uma porta de pedra aqui com dois encaixes redondos. Parece que ela espera dois símbolos, numa ordem certa." },
+    ],
+    mjDepois: [{ quem: "mj", texto: "Lembra da inscrição no poço? Talvez ela diga a ordem." }],
+    portaSemPistas: [{ quem: "jogador", texto: "Dois encaixes vazios. Ainda não sei que símbolos vão aqui... Deve haver pistas lá fora." }],
+    portaAberta: [{ quem: "mj", texto: "Uma passagem! Do outro lado... parece Jerusalém, já de noite." }],
+    jesusDepois: [{ quem: "jesus", ref: "João 4:35", texto: "Olhem para os campos: já estão prontos para a colheita." }],
+    beaFim: [{ quem: "bea", texto: "O MJ foi para a gruta lá em cima. Disse que viu uma porta estranha." }],
+    pocoExame: [{ quem: "jogador", texto: "O poço é muito fundo. Lá embaixo, a água brilha." }],
+    portaFechada: [{ quem: "jogador", texto: "Uma porta de pedra com dois encaixes redondos." }],
+  },
+
+  // ======================= BETESDA (João 5:1-9) =======================
+  betesda: {
+    intro: [
+      { quem: "narrador", ref: "João 5:2–3", texto: "Em Jerusalém, perto da Porta das Ovelhas, há um tanque chamado Betesda, cercado por cinco pavilhões. Ali ficavam deitados muitos doentes: cegos, mancos e paralíticos." },
+    ],
+    thama: [
+      { quem: "thama", texto: "Que silêncio... só se ouve a água." },
+      { quem: "thama", texto: "Olha aquele homem deitado perto do tanque. Dizem que está doente há trinta e oito anos." },
+    ],
+    thamaDepois: [{ quem: "thama", texto: "Cinco colunas, cinco pavilhões... Passa a luz negra nelas!" }],
+    thamaFinal: [{ quem: "thama", texto: "A parede do fundo está brilhando! Ilumina lá!" }],
+    enfermoAntes: [{ quem: "enfermo", texto: "Moço... você também espera a água se agitar?" }],
+    cura: [
+      { quem: "narrador", ref: "João 5:5", texto: "Ali estava um homem que era doente havia trinta e oito anos." },
+      { quem: "jesus", ref: "João 5:6", texto: "Você quer ser curado?" },
+      { quem: "enfermo", ref: "João 5:7", texto: "Senhor, não tenho ninguém que me coloque no tanque quando a água se agita. Enquanto tento chegar, outro desce antes de mim." },
+      { quem: "jesus", ref: "João 5:8", texto: "Levante-se, pegue a sua maca e ande." },
+    ],
+    curado: [
+      { quem: "narrador", ref: "João 5:9", texto: "Na mesma hora o homem ficou curado. Pegou a sua maca e começou a andar." },
+      { quem: "enfermoCurado", texto: "Eu estou de pé! Trinta e oito anos... e agora estou andando!" },
+    ],
+    achouMaca: [{ quem: "jogador", texto: "Uma maca... o terceiro símbolo! Talha, gota e maca." }],
+    inscricaoTanque: [{ quem: "jogador", texto: "\"Siga os sinais na ordem em que os encontrou.\" As colunas! Cada uma deve guardar um símbolo." }],
+    colunaSemPista: [{ quem: "jogador", texto: "Uma coluna antiga e úmida. Parece que tem algo gravado, mas não consigo ver." }],
+    errou: [{ quem: "jogador", texto: "As marcas se apagaram. Preciso tocar as colunas na ordem certa." }],
+    doente: [{ quem: "doente1", texto: "Estamos todos esperando... há muito tempo." }],
+    doente2: [{ quem: "doente2", texto: "Você viu? Aquele homem se levantou! Quem é que o curou?" }],
+    doente2Antes: [{ quem: "doente2", texto: "Dizem que de tempos em tempos a água se agita... e todos tentam descer ao mesmo tempo." }],
+    retirou: [{ quem: "narrador", ref: "João 5:13", texto: "O homem que tinha sido curado não sabia quem era, pois Jesus havia se retirado no meio da multidão que estava ali." }],
+    thamaMaca: [{ quem: "thama", texto: "Ele levou a maca... mas olha o chão onde ele ficou deitado. Passa a luz negra ali!" }],
+    samuel: [
+      { quem: "samuel", texto: "Até que enfim vocês chegaram! Eu vim na frente para ver o lugar." },
+      { quem: "samuel", texto: "Repara nas colunas: uma em cada pavilhão. Cinco ao todo. Parece que alguém riscou alguma coisa nelas." },
+    ],
+    samuelDepois: [{ quem: "samuel", texto: "Talha em Caná, gota em Sicar, maca aqui em Jerusalém... Será que a ordem importa?" }],
+    samuelFim: [{ quem: "samuel", texto: "Ouviu esse barulho? Alguma coisa se mexeu atrás da parede do fundo!" }],
+    colunaCedo: [{ quem: "jogador", texto: "Um símbolo brilha na coluna... mas ainda falta uma peça para entender a ordem." }],
+    colunaCerta: [{ quem: "jogador", texto: "O símbolo acendeu..." }],
+    paredeFinal: [{ quem: "jogador", texto: "Tem algo escrito na parede do fundo... Ainda não acabou." }],
+  },
+};
