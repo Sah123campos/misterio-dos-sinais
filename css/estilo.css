@@ -652,6 +652,14 @@ kbd {
 .final-titulo.visivel { opacity: 1; transform: none; }
 .final-botoes { width: min(88vw, 460px); opacity: 0; transition: opacity 1s; pointer-events: none; }
 .final-botoes.visivel { opacity: 1; pointer-events: auto; }
+.final-evento {
+  margin: 0 0 0.8em;
+  font-size: clamp(14px, 3.4vh, 22px);
+  color: #e8dcff;
+  text-shadow: 0 0 10px rgba(170, 110, 255, 0.45);
+}
+.final-evento p { margin: 0.15em 0; }
+.final-evento strong { color: #ffd46a; }
 
 /* ---------- Girar o celular ---------- */
 .girar {
